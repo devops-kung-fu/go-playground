@@ -1,0 +1,85 @@
+{
+    "name": "go-playground",
+    "image": "mcr.microsoft.com/devcontainers/go:1-1.24-bookworm",
+    "features": {
+        "ghcr.io/devcontainers-extra/features/starship:1": {},
+        "ghcr.io/azutake/devcontainer-features/go-packages-install:0": {
+            "packages": [
+                "github.com/jandelgado/gcov2lcov@latest",
+                "github.com/kisielk/errcheck@latest",
+                "github.com/fzipp/gocyclo/cmd/gocyclo@latest",
+                "golang.org/x/vuln/cmd/govulncheck@latest",
+                "honnef.co/go/tools/cmd/staticcheck@latest",
+                "github.com/janpfeifer/gonb@latest",
+                "golang.org/x/tools/cmd/goimports@latest",
+                "golang.org/x/tools/gopls@latest"
+            ]
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.fontFamily": "'0xProto Nerd Font','Courier New', monospace",
+                "terminal.integrated.fontFamily": "'0xProto Nerd Font','Courier New', monospace",
+                "notebook.output.fontFamily" : "'0xProto Nerd Font','Courier New', monospace",
+                "explorer.openEditors.sortOrder": "alphabetical",
+                "explorer.openEditors.minVisible": 0,
+                "go.buildTags": "",
+                "go.toolsEnvVars": {
+                    "CGO_ENABLED": "0"
+                },
+                "go.useLanguageServer": true,
+                "go.testEnvVars": {
+                    "CGO_ENABLED": "1"
+                },
+                "go.testFlags": [
+                    "-v",
+                    "-race"
+                ],
+                "go.testTimeout": "10s",
+                "go.coverOnSingleTest": true,
+                "go.coverOnSingleTestFile": true,
+                "go.coverOnTestPackage": true,
+                "go.lintTool": "golangci-lint",
+                "go.lintOnSave": "package",
+                "[go]": {
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "always"
+                    }
+                },
+				"window.menuBarVisibility": "classic",
+				"workbench.activityBar.location": "top",
+				"debug.toolBarLocation": "docked",
+				"workbench.colorTheme": "Default Light Modern",
+				"editor.useTabStops": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnPaste": true,
+				"git.autofetch": true,
+				"[markdown]": {
+					"editor.defaultFormatter": "esbenp.prettier-vscode"
+				},
+                "markiscodecoverage.coverageThreshold": 95,
+                "markiscodecoverage.enableOnStartup": true,
+                "markiscodecoverage.searchCriteria": "*.lcov*"
+            },
+            "extensions": [
+                "ms-vscode.go",
+                "golang.go",
+                "github.vscode-pull-request-github",
+                "github.vscode-github-actions",
+                "aleksandra.go-group-imports",
+                "oderwat.indent-rainbow",
+                "quicktype.quicktype",
+                "ahebrank.yaml2json",
+                "Github.copilot",
+                "markis.code-coverage",
+                "Gruntfuggly.todo-tree",
+                "esbenp.prettier-vscode",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.vscode-jupyter-slideshow",
+                "ms-toolsai.vscode-jupyter-powertoys"
+            ]
+        }
+    },
+   "onCreateCommand": "gonb --install"
+}
